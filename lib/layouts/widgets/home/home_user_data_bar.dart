@@ -5,6 +5,8 @@ import 'package:scotter_app_ui_kit/layouts/views/navigation_screen.dart';
 import 'package:scotter_app_ui_kit/layouts/widgets/common/custom_subtitle_text.dart';
 import 'package:scotter_app_ui_kit/layouts/widgets/common/custom_title_text.dart';
 
+import '../common/custom_fade_transition_route.dart';
+
 class HomeUserDataBar extends StatelessWidget {
   const HomeUserDataBar({
     super.key,
@@ -40,7 +42,9 @@ class HomeUserDataBar extends StatelessWidget {
           const Spacer(),
           IconButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const NavigationScreen()));
+                Navigator.of(context).push(
+                    customFadeTransitionRoute(const NavigationScreen())
+                );
               },
               icon: SvgPicture.asset('assets/icons/Union.svg')),
         ],

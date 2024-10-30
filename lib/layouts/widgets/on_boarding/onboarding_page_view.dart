@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:scotter_app_ui_kit/data/onboarding_pages_data.dart';
 import 'package:scotter_app_ui_kit/layouts/widgets/common/custom_white_text.dart';
+import 'package:scotter_app_ui_kit/layouts/widgets/on_boarding/animated_text_view.dart';
+import 'package:scotter_app_ui_kit/notifiers/boarding_notifier.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({
     super.key,
-    required this.onBoardingData,
   });
 
-  final Map<String, String> onBoardingData;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,15 +36,7 @@ class OnBoardingPageView extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height * 0.042),
           child: SvgPicture.asset("assets/images/scooter_illustration.svg"),
         ),
-        SizedBox(
-          width: 315,
-          height: 84,
-          child: CustomWhiteText(
-            text: onBoardingData['description']!,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+        const AnimatedTextView(),
       ],
     );
   }

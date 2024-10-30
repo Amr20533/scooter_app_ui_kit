@@ -10,7 +10,7 @@ class NavigatorTiles extends StatefulWidget {
 }
 
 class NavigatorTilesState extends State<NavigatorTiles> {
-
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
   final List<String> pages = [
     "Home",
     "Profile",
@@ -25,16 +25,42 @@ class NavigatorTilesState extends State<NavigatorTiles> {
   int selectedIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+    _animatedContent();
+  }
+
+  _animatedContent() {
+    for(int i = 0; i < pages.length; i++) {
+      Future.delayed(Duration(milliseconds: i * 100), () {
+        _listKey.currentState?.insertItem(i);
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SizedBox(
           width: 190,
           height: 412,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(pages.length, (index) {
-              return GestureDetector(
+          child: AnimatedList(
+            key: _listKey,
+            padding: EdgeInsets.zero,
+            initialItemCount: 0,
+            itemBuilder: (context, index, animation){
+            return _buildListItem(index, animation);
+          }),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildListItem(int index, Animation<double> animation) {
+    return SizeTransition(
+      sizeFactor: animation,
+          child: GestureDetector(
                 onTap: () {
                   setState(() {
                     if(index < pages.length - 1){
@@ -42,7 +68,9 @@ class NavigatorTilesState extends State<NavigatorTiles> {
                     }
                   });
                 },
-                child: Container(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.decelerate,
                   height: 33,
                   padding: const EdgeInsets.only(left: 26),
                   margin: const EdgeInsets.symmetric(vertical: 8),
@@ -62,11 +90,8 @@ class NavigatorTilesState extends State<NavigatorTiles> {
                     color: Colors.white,
                   ),
                 ),
-              );
-            }),
-          ),
-        ),
-      ],
+              ),
     );
+
   }
 }
