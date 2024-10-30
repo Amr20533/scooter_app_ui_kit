@@ -1,16 +1,12 @@
+
 # scotter_app_ui_kit
 
-A new Flutter project.
+The Scooter App UI Kit offers a sleek and intuitive design for tracking your scooter. Features include real-time location monitoring, a user-friendly dashboard, integrated navigation, and customizable profiles. Stay informed with notifications on battery status and maintenance needs. Elevate your scooter experience with this all-in-one UI solution!
 
-## Getting Started
+## Design
 
-This project is a starting point for a Flutter application.
+![Group 4](https://github.com/user-attachments/assets/7928c0b4-3532-468a-9f59-d31a1646af18)
 
-A few resources to get you started if this is your first Flutter project:
+## Demo
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/user-attachments/assets/97928846-1d8e-4ca7-acdb-baafa4d8fded
